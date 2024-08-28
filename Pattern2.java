@@ -24,10 +24,11 @@ public class Pattern2{
 					System.out.print(" * ");
 				
 				}
-			}
+		}
 
 
 
 	}
+
 
 }

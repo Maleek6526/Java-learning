@@ -30,7 +30,7 @@ public static void displaySortedNumbers(double number1, double number2, double n
 	}
 
 	if(number3 > number1 && number3 > number2 && number1 > number2){
-		System.out.printf("%.1f%n%.1f%n%.1f", number3 , number1 , number3);
+		System.out.printf("%.1f%n%.1f%n%.1f", number3 , number1 , number2);
 	}
 
 

@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class CurrentDateAndTime{
 
@@ -6,10 +6,9 @@ public class CurrentDateAndTime{
 
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.print("Enter in milliseconds: ");
-		long userInput = scanner.nextLong();
+		long millis = System.currentTimeMillis();
 
-		String currentOutput = getCurrentTime(userInput);
+		String currentOutput = getCurrentTime(millis);
 
 		System.out.println(currentOutput);
 	
@@ -28,8 +27,10 @@ public static String getCurrentTime(long number){
 
 	long hours = minute / 60;
 
-	long currentHours = minute % 24;
+	long currentHours = hours % 24;
 
-	return String.format("Current date and time is %d:%d:%d", currentHours, currentMinute, currentSeconds);
+	long finalCurrentHour = currentHours + 1;
+
+	return String.format("Current date and time is %02d:%02d:%02d", finalCurrentHour, currentMinute, currentSeconds);
 }
 }

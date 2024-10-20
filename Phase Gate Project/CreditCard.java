@@ -5,6 +5,7 @@ public class CreditCard{
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
+		
 		try {
 
 			System.out.println("Hello, Kindly Enter Card details to verify");
@@ -20,185 +21,196 @@ public class CreditCard{
 		}
 
 	}
-		public static String getModifiedString(String card){
-
-				String aboutToModify = card;
-
-				String modifiedCardNumber = aboutToModify.replace(" ", "").replace("_", "");
-
-				int length = modifiedCardNumber.length();
 		
-				if(length >= 13 && length <= 16){
+	public static String getModifiedString(String card){
 
-					if(modifiedCardNumber.startsWith("4")) {
-						System.out.println("**Credit Card Type: Visa Card");
+		String aboutToModify = card;
 
-						System.out.println("**Credit Card Digit Length "+length);
+		String modifiedCardNumber = aboutToModify.replace(" ", "").replace("_", "");
 
-						System.out.println("**CreditCard Number: "+ modifiedCardNumber);
-					} 
-					else if (modifiedCardNumber.startsWith("5")) {
-						System.out.println( "**Credit Card Type: MasterCard Card");
+		int length = modifiedCardNumber.length();
+		
+		if(length >= 13 && length <= 16){
 
-						System.out.println("**Credit Card Digit Length "+length);
-
-						System.out.println("**CreditCard Number: "+ modifiedCardNumber);
-
-					} 
-					else if (modifiedCardNumber.startsWith("37")) {
-						System.out.println("**Credit Card Type: American Express Card");
-
-						System.out.println("**Credit Card Digit Length "+length);
-
-						System.out.println("**CreditCard Number: "+ modifiedCardNumber);
-
-					} 
-					else if (modifiedCardNumber.startsWith("6")) {
-						System.out.println("**Credit Card Type: Discover Card");
-
-						System.out.println("**Credit Card Digit Length "+length);
-
-						System.out.println("**CreditCard Number: "+ modifiedCardNumber);
-
-					}
-					else {
-						System.out.println("**Credit Card Type: Invalid Card");
-
-						System.out.println("**Credit Card Digit Length "+length);
-
-						System.out.println("**CreditCard Number: "+ modifiedCardNumber);
-
-					}
-
-				}
-
-				else{
-					System.out.println("Invalid Credit Card!");
-
-				}
-			return modifiedCardNumber;
-
-		}	
+			if(modifiedCardNumber.startsWith("4")) {
 	
-	
-		public static int[] getConvertedIntCreditCard(String modifiedCard){
+				System.out.println("**Credit Card Type: Visa Card");
 
-			String alreadyModified = getModifiedString(modifiedCard);
+				System.out.println("**Credit Card Digit Length "+length);
 
-			int[] convertedIntCreditCard = new int[alreadyModified.length()];
-			
-			for(int count = 0; count < alreadyModified.length(); count++){
-
-				convertedIntCreditCard[count] = Integer.valueOf(String.valueOf(modifiedCard.charAt(count)));
+				System.out.println("**CreditCard Number: "+ modifiedCardNumber);
 
 			} 
-			
-			return convertedIntCreditCard;
+
+			else if (modifiedCardNumber.startsWith("5")) {
+
+				System.out.println( "**Credit Card Type: MasterCard Card");
+
+				System.out.println("**Credit Card Digit Length "+length);
+
+				System.out.println("**CreditCard Number: "+ modifiedCardNumber);
+
+			} 
+			else if (modifiedCardNumber.startsWith("37")) {
+
+				System.out.println("**Credit Card Type: American Express Card");
+
+					System.out.println("**Credit Card Digit Length "+length);
+
+					System.out.println("**CreditCard Number: "+ modifiedCardNumber);
+
+			} 
+			else if (modifiedCardNumber.startsWith("6")) {
+
+				System.out.println("**Credit Card Type: Discover Card");
+
+					System.out.println("**Credit Card Digit Length "+length);
+
+					System.out.println("**CreditCard Number: "+ modifiedCardNumber);
+
+				}
+			else {
+
+				System.out.println("**Credit Card Type: Invalid Card");
+
+				System.out.println("**Credit Card Digit Length "+length);
+
+				System.out.println("**CreditCard Number: "+ modifiedCardNumber);
+
+			}
 
 		}
 
+		else{
+			System.out.println("Invalid Credit Card!");
 
-		public static int[] getOddAndEvenIndexes(String elements){
+		}
 
-				int[] data = getConvertedIntCreditCard(elements);
+		return modifiedCardNumber;
 
-				int[] arrayDoubleConvertedIntCreditCard = new int[data.length];
+	}	
+	
+	
+	public static int[] getConvertedIntCreditCard(String modifiedCard){
 
-				int doubleConvertedIntCreditCard = 0;
+		String alreadyModified = getModifiedString(modifiedCard);
 
-				for(int count = 0; count < data.length; count++){
+		int[] convertedIntCreditCard = new int[alreadyModified.length()];
+			
+		for(int count = 0; count < alreadyModified.length(); count++){
 
-					if(data.length % 2 == 0){
+			convertedIntCreditCard[count] = Integer.valueOf(String.valueOf(modifiedCard.charAt(count)));
 
-						if(count % 2 == 0){
+		} 
+			
+		return convertedIntCreditCard;
 
-							doubleConvertedIntCreditCard = data[count] * 2;
+	}
 
-							if(doubleConvertedIntCreditCard > 9){
+
+	public static int[] getOddAndEvenIndexes(String elements){
+
+		int[] data = getConvertedIntCreditCard(elements);
+
+		int[] arrayDoubleConvertedIntCreditCard = new int[data.length];
+
+		int doubleConvertedIntCreditCard = 0;
+
+		for(int count = 0; count < data.length; count++){
+
+			if(data.length % 2 == 0){
+
+				if(count % 2 == 0){
+
+					doubleConvertedIntCreditCard = data[count] * 2;
+
+					if(doubleConvertedIntCreditCard > 9){
 									
-								doubleConvertedIntCreditCard -= 9;		
-							}
-							
-							else{
+						doubleConvertedIntCreditCard -= 9;		
 
-								doubleConvertedIntCreditCard = data[count] * 2;
+					}
+						
+					else{
 
-							}
+						doubleConvertedIntCreditCard = data[count] * 2;
 
-							arrayDoubleConvertedIntCreditCard[count] = doubleConvertedIntCreditCard;
-							
-						}
-
-						else{
-
-							arrayDoubleConvertedIntCreditCard[count] = data[count];
-						}
 					}
 
+					arrayDoubleConvertedIntCreditCard[count] = doubleConvertedIntCreditCard;
+							
+				}
 
-					else if (data.length % 2 == 1){
+				else{
 
-						if(count % 2 != 0){
+					arrayDoubleConvertedIntCreditCard[count] = data[count];
 
-							doubleConvertedIntCreditCard = data[count] * 2;
+				}
+			}
 
-							if(doubleConvertedIntCreditCard > 9){
+
+			else if (data.length % 2 == 1){
+
+				if(count % 2 != 0){
+
+					doubleConvertedIntCreditCard = data[count] * 2;
+
+					if(doubleConvertedIntCreditCard > 9){
 									
-								doubleConvertedIntCreditCard -= 9;					
+						doubleConvertedIntCreditCard -= 9;					
 		
-							}
-
-							else{
-
-								doubleConvertedIntCreditCard = data[count] * 2;
-
-							}
-
-							arrayDoubleConvertedIntCreditCard[count] = doubleConvertedIntCreditCard;
-						}
 					}
 
 					else{
 
-						arrayDoubleConvertedIntCreditCard[count] = data[count];
+						doubleConvertedIntCreditCard = data[count] * 2;
+
 					}
-								
+
+					arrayDoubleConvertedIntCreditCard[count] = doubleConvertedIntCreditCard;
 				}
-
-				
-				return arrayDoubleConvertedIntCreditCard;
-
-		}
-
-
-		public static String checkValidity(String validity){
-
-			int[] checkValidity = getOddAndEvenIndexes(validity);
-
-			int totalArraySum = 0;
-
-			String result = "";
-
-			for(int count = 0; count < checkValidity.length; count++){
-
-				totalArraySum += checkValidity[count];
-			
-			}
-
-			if(totalArraySum % 10 == 0){
-				
-				result = "**Credit Card Vadility Status: Valid";
-
 			}
 
 			else{
 
-				result = "**Credit Card Vadility Status: Invalid";
-
+				arrayDoubleConvertedIntCreditCard[count] = data[count];
 			}
-
-			return result;
+								
 		}
+
+				
+		return arrayDoubleConvertedIntCreditCard;
+
+	}
+	
+
+	public static String checkValidity(String validity){
+
+		int[] checkValidity = getOddAndEvenIndexes(validity);
+
+		int totalArraySum = 0;
+
+		String result = "";
+
+		for(int count = 0; count < checkValidity.length; count++){
+
+			totalArraySum += checkValidity[count];
+			
+		}
+
+		if(totalArraySum % 10 == 0){
+				
+			result = "**Credit Card Vadility Status: Valid";
+
+		}
+
+		else{
+
+			result = "**Credit Card Vadility Status: Invalid";
+
+		}
+
+		return result;
+	}
 
 		
 

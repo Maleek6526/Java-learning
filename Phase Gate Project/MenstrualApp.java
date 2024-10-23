@@ -59,7 +59,7 @@ public class MensturalApp{
 
 	public static LocalDate getOvulationPeriod(LocalDate date, int length){
 
-		int ovulation = length / 2;
+		int ovulation = 14;
 
 		return date.plusDays(ovulation);
 	}
@@ -73,7 +73,7 @@ public class MensturalApp{
 
 
 	public static LocalDate[] getFertileWindow(LocalDate date, int length) {
-		int ovulation = length / 2;
+		int ovulation = 14;
 
 		int fertileCalculationBeforeOvulation = ovulation - 3;
 		int fertileCalculationAfterOvulation = ovulation + 3;
@@ -101,6 +101,19 @@ public class MensturalApp{
 
 
 	public static LocalDate[] getFlowDate(LocalDate date, int range, int length) {
+
+		if(length > 28){
+
+			System.out.println("Please this cycle length seems abnorrmal, go and see a doctor!");
+
+		}
+
+
+		if(range < 3 && range > 7){
+
+			System.out.println("Please menstural range seems abnormal");
+
+		}
 		LocalDate flowDate = getNextPeriodDate(date, length);
     
 		LocalDate flowStart = flowDate.minusDays(range);

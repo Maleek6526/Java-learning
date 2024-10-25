@@ -92,7 +92,12 @@ public class StudentGrade{
 
 	public static void getStudentChart(int num, int sub){
 
-		int[] positioning = new int[num];
+		int[] bubbleSorting = new int[num];
+
+		int[] totalPosition = new int[num];
+
+
+		int[] newPositioning = new int[num];
 
 		int[][]scoreInputs = getInputCollected(num, sub);
 
@@ -126,12 +131,13 @@ public class StudentGrade{
 				System.out.print(" \t " + scoreInputs[index][count]);
 
 			}
-				positioning[index] = sum;
+				bubbleSorting[index] = sum;
+
+				totalPosition[index] = sum;
 
 				average = (float) sum / sub;
 			System.out.print(" \t"+sum);
 			System.out.printf(" \t%.2f", average);
-			System.out.print(" \t  "+ positioning[index]);
 			System.out.println();
 
 		}
@@ -140,19 +146,19 @@ public class StudentGrade{
 
 
 
-		for(int index = 1; index < positioning.length; index++){
+		for(int index = 1; index < bubbleSorting.length; index++){
 
 			int temp = 0;
 	
-			for(int count = 1; count < positioning.length; count++){
+			for(int count = 1; count < bubbleSorting.length; count++){
 
-				if(positioning[count] < positioning[count-1]){
+				if(bubbleSorting[count] < bubbleSorting[count-1]){
 	
-					temp = positioning[count];
+					temp = bubbleSorting[count];
 
-					positioning[count] = positioning[count-1];
+					bubbleSorting[count] = bubbleSorting[count-1];
 				
-					positioning[count-1] = temp;
+					bubbleSorting[count-1] = temp;
 
 				}
 
@@ -161,8 +167,27 @@ public class StudentGrade{
 			}
 		}
 
+		for(int index = 0; index < bubbleSorting.length; index++){
 
-		System.out.println(Arrays.toString(positioning));
+				int counter = 1;
+
+			for(int count = 0; count < bubbleSorting.length; count++){
+
+				if(totalPosition[index] < bubbleSorting[count]) counter++;
+
+			}
+
+			newPositioning[index] = counter;
+
+		}
+
+			for(int display = 0; display < newPositioning.length; display++){
+
+
+				System.out.println(newPositioning[display]);
+
+			}
+
 
 
 		

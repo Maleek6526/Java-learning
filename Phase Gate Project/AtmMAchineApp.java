@@ -4,7 +4,7 @@ public class AtmMAchineApp{
 
 	private String firstName;
 	private String lastName;
-	private String usersPin;
+	private int usersPin;
 	private double balance;
 
 	
@@ -13,6 +13,7 @@ public void setFirstName(String firstName){
 	this. firstName = firstName;
 
 }
+
 
 public String getFirstName(){
 
@@ -35,16 +36,22 @@ public String getLastName(){
 
 }
 
-public void setUsersPin(String pin){
+public void setUsersPin(int pin){
 
 	this. usersPin = pin;
 
 }
 
 
-public String getUsersPin(){
+public int getUsersPin(){
 
 	return usersPin;
+
+}
+
+public void setUserBalance(double balance){
+
+	this. balance = balance;
 
 }
 

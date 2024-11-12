@@ -1,12 +1,10 @@
 import java.util.Scanner;
-import java.util.Random;
-import java.util.ArrayList;
 
 public class AtmMAchineAppTest{
 
-	private static ArrayList<AtmMAchineApp> bank = new ArrayList<AtmMAchineApp>();
-	
 	public static void main(String[] args){
+
+		AtmMAchineApp atmTest = new AtmMAchineApp();
 
 		atmDisplay();
 
@@ -46,10 +44,9 @@ public static void atmDisplay(){
 	switch(usersChoice){
 
 		case 1: openNewAccount(); break;
-		case 2: checkAccountStatus(); break;
-		case 3: deposit(); break;
-		case 4: withdraw(); break;
-		case 5: accountBalance(); break;
+		case 2: deposit(); break;
+		case 3: withdraw(); break;
+		case 4: accountBalance(); break;
 		//case 5: transfer(); break;
 		//case 6: changePin(); break;
 		case 0: quit(); break;
@@ -60,8 +57,8 @@ public static void atmDisplay(){
 }
 
 
-public static void openNewAccount(){
 
+public static void openNewAccount(){
 
 	String accountDisplay = """ 
 		
@@ -78,6 +75,8 @@ public static void openNewAccount(){
 
 	System.out.println(accountDisplay);
 
+	AtmMAchineApp atmTest = new AtmMAchineApp();
+
 	Scanner scanner = new Scanner(System.in);
 
 	System.out.print("Please enter your first name: ");
@@ -92,17 +91,13 @@ public static void openNewAccount(){
 
 	System.out.print("Please enter four digit pin: ");
 
-	String usersPin = scanner.next();
+	int usersPin = scanner.nextInt();
 
-	if(usersPin.length() == 4){
-
-		AtmMAchineApp atmTest = new AtmMAchineApp();
+	if(usersPin >= 1000 && usersPin <= 9999){
 
 		atmTest.setFirstName(firstName);
 		atmTest.setLastName(lastName);
 		atmTest.setUsersPin(usersPin);
-
-		bank.add(atmTest);
 
 		System.out.println("Your first name is: "+ atmTest.getFirstName());
 		System.out.println("Your last name is: "+ atmTest.getLastName());
@@ -164,29 +159,9 @@ public static void openNewAccount(){
 }
 
 
-
-public static void checkAccountStatus(){
-	Scanner scanner = new Scanner(System.in);
-	
-	System.out.print("Enter your first name: ");
-	String userAccountName = scanner.next();
-
-	System.out.print("Enter your pin: ");
-	String userAccountPin = scanner.next();
-
-	for(AtmMAchineApp atmMAchineApp : bank){
-		if(AtmMAchineApp.getFirstName().equals(userAccountName) && AtmMAchineApp.getUsersPin().equals(userAccountPin)){
-			System.out.println("Hi! welcome");
-		}
-		else{
-			System.out.print("Please you need to register first!");
-		}
-	}
-
-}
-
-
 public static void deposit(){
+
+	AtmMAchineApp atmTest = new AtmMAchineApp();
 
 	String depositDisplay = """ 
 
@@ -204,15 +179,15 @@ public static void deposit(){
 
 	System.out.println(depositDisplay);
 
+	System.out.printf("Your new balance is $ %,f %n", atmTest.getUserBalance());
+
 	Scanner scanner = new Scanner(System.in);
 
 	System.out.print("Please amount for deposit: ");
 	double usersAccountDeposit = scanner.nextDouble();
 
-	for(AtmMAchineApp account : bank){
-
-		account.usersDeposit(usersAccountDeposit);
-	}		
+	atmTest.usersDeposit(usersAccountDeposit);
+			
 
 	System.out.printf("You've successfully deposited %,f into your account %n",usersAccountDeposit);
 
@@ -250,6 +225,8 @@ public static void deposit(){
 
 public static void withdraw(){
 
+	AtmMAchineApp atmTest = new AtmMAchineApp();
+
 	String withdrawDisplay = """ 
 
 			===================================================
@@ -272,13 +249,7 @@ public static void withdraw(){
 
 	if(usersAccountWithdrawal > 0){
 
-	for(AtmMAchineApp account : bank){
-
-		account.usersWithdrawal(usersAccountWithdrawal);
-	
-	}	
-
-	System.out.printf("You've successfully withdraw %,f from your account %n",usersAccountWithdrawal);	
+		atmTest.usersWithdrawal(usersAccountWithdrawal);
 
 
 
@@ -340,6 +311,8 @@ public static void withdraw(){
 
 public static void accountBalance(){
 
+	AtmMAchineApp atmTest = new AtmMAchineApp();
+
 	String accountBalanceDisplay = """ 
 
 			================================================================
@@ -355,20 +328,12 @@ public static void accountBalance(){
 
 	System.out.println(accountBalanceDisplay);
 
-	for(AtmMAchineApp account : bank){
+	System.out.println("Your first name is: "+ atmTest.getFirstName());
+	System.out.println("Your last name is: "+ atmTest.getLastName());
+	System.out.println("Your pin is saved and secured successfully: ****");
 
-	
-		System.out.println("Your first name is: "+ account.getFirstName());
-		System.out.println("Your last name is: "+ account.getLastName());
-		System.out.println("Your pin is saved and secured successfully: ****");
+	System.out.printf("Your new balance is $ %,f %n", atmTest.getUserBalance());
 
-		System.out.printf("Your new balance is $ %,f %n", account.getUserBalance());
-
-
-
-	}
-
-	
 
 	String UserPreviousMenu = """ 
 			===================================================
@@ -396,7 +361,6 @@ public static void accountBalance(){
 
 
 	}
-
 	
 }
 

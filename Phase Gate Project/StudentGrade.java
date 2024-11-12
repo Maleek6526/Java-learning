@@ -14,7 +14,7 @@ public class StudentGrade{
 		System.out.print("How many subjects do they offer? ");
 		int numberOfSubjects = scanner.nextInt();
 
-		if(numberOfStudents > 0 ){
+		if(numberOfStudents > 0){
 	
 			if(numberOfSubjects > 0){
 
@@ -92,7 +92,7 @@ public class StudentGrade{
 
 	public static void getStudentChart(int num, int sub){
 
-		int[] bubbleSorting = new int[num];
+		int[] positioning = new int[num];
 
 		int[] totalPosition = new int[num];
 
@@ -127,7 +127,7 @@ public class StudentGrade{
 
 			for(int count = 0; count < scoreInputs[index].length; count++){
 
-				sum += scoreInputs[index][count];
+				sum += scoreInputs[index][count];`
 				System.out.print(" \t " + scoreInputs[index][count]);
 
 			}
@@ -167,13 +167,14 @@ public class StudentGrade{
 			}
 		}
 
+
 		for(int index = 0; index < bubbleSorting.length; index++){
 
 				int counter = 1;
 
 			for(int count = 0; count < bubbleSorting.length; count++){
 
-				if(totalPosition[index] < bubbleSorting[count]) counter++;
+				if(totalPosition[index] > bubbleSorting[count]) counter++;
 
 			}
 
@@ -181,14 +182,7 @@ public class StudentGrade{
 
 		}
 
-			for(int display = 0; display < newPositioning.length; display++){
-
-
-				System.out.println(newPositioning[display]);
-
-			}
-
-
+		System.out.println(Arrays.toString(newPositioning));
 
 		
 

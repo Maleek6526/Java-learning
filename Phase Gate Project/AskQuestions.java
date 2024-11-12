@@ -1,8 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
-import java.util.ArrayList;
 
-public class Mbti {
+public class AskQuestions {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -11,8 +10,6 @@ public class Mbti {
 
 	System.out.println();
 
-	ArrayList <String> theAnswers = new ArrayList <> ();
-
         String[] optionsA = {"expend energy, enjoy groups","Interpret literally","logical, thinking, questioning","organized, orderly","more outgoing, think out loud","practical, realistic, experiential","candid, straightforward, frank","plan, schedule","seek many tasks, public activities, interaction with others","standard, usual, conventional","firm, tend to criticize, hold the line","regulated, structured","external, communicative, express yourself","focus on here-and-now","tough-minded, just","preparation, plan ahead","active, initiate","facts, things, what is, ideas","matter of fact, issue-oriented","control, govern"};
 
 	String[] optionsB = {
@@ -20,39 +17,13 @@ public class Mbti {
 "internal, reticent, keep to yourself","look to the future, global perspective, big picture","tender-hearted, merciful","go with the flow, adapt as you go","reflective, deliberate","ideas, dreams, what could be, philosophical","sensitive, people-oriented, compassionate","latitude, freedom"};
 
 
+	for(int i = 0; count < options.length; coount++){
 
-while(true){
-	for(int count = 0; count < optionsA.length; count++){
-
-		System.out.printf("A %s\t B %s%n", optionsA[count], optionsB[count] );
-		String userInput = scanner.next();
-
-			if(userInput.equalsIgnoreCase("A")){
-
-				theAnswers.add(optionsA[count]);
-			}
-
-			else if(userInput.equalsIgnoreCase("B")){
-
-				theAnswers.add(optionsB[count]);
-			}
-
-
-			else{
-
-				System.out.println("You have enter an invalid input. please pick the right option (A or B)");
-
-			}
+		System.out.printf("A %s\t B %s", optionsA[count], optionsB[count]);
 
 	}
-
-}
-
-	 		System.out.println("Thank you, " + name + ". Here are your answers:");
-        	for (String answer : theAnswers) {
-        		    System.out.println(answer);
-        	}
 	
-	}
 	
+
+    }
 }

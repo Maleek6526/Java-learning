@@ -145,4 +145,32 @@ public class ItemTest {
         assertFalse(itemManager.getListOfItems().contains(item1));
         assertTrue(itemManager.getListOfItems().contains(item2));
     }
+
+    @Test
+    public void updateExistingItem() {
+        itemManager.save(item1);
+        itemManager.save(item2);
+        int itemIdToUpdate = 2;
+        Item updatedItem = new Item("Updated Name", itemIdToUpdate, "Updated description", 200);
+
+        itemManager.update(itemIdToUpdate, updatedItem);
+
+        List<Item> items = itemManager.findAll();
+        assertEquals(2, items.size());
+        Item retrievedItem = items.get(1);
+        assertEquals("Updated Name", retrievedItem.getName());
+        assertEquals("Updated description", retrievedItem.getDescription());
+        assertEquals(200, retrievedItem.getWeightInGram());
+    }
+
+    @Test
+    public void updateNonExistingItem() {
+        int nonExistingId = 9;
+        Item updatedItem = new Item("Attempted Update", nonExistingId, "This should not be saved", 300);
+
+        itemManager.update(nonExistingId, updatedItem);
+
+        List<Item> items = itemManager.findAll();
+        assertTrue(items.isEmpty());
+    }
 }

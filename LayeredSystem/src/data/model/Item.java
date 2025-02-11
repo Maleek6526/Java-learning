@@ -114,5 +114,17 @@ public class Item {
         count = listOfItems.size();
     }
 
-    public
+    public void update(int id, Item updatedItem) {
+        for (int index = 0; index < listOfItems.size(); index++) {
+            Item existingItem = listOfItems.get(index);
+            if (existingItem.getItemID() == id) {
+                existingItem.setName(updatedItem.getName());
+                existingItem.setDescription(updatedItem.getDescription());
+                existingItem.setWeightInGram(updatedItem.getWeightInGram());
+                System.out.println("Item with ID " + id + " updated successfully.");
+                return;
+            }
+        }
+        System.out.println("Item with ID " + id + " not found in the list.");
+    }
 }
